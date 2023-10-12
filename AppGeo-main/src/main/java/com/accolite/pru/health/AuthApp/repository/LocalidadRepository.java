@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.accolite.pru.health.AuthApp.model.Localidad;
 
 @Repository
-public interface LocalidadRepository extends JpaRepository<Localidad, Integer> {
+public interface LocalidadRepository extends JpaRepository<Localidad, Long> {
 
 	Localidad findByNombre(String nombre);
 	

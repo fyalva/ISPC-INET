@@ -28,4 +28,9 @@ public class ProvinciaService {
 		return provinciaRepository.save(provincia);
 	}
 
+	public Provincia findById(Long id_provincia) {
+		// TODO Auto-generated method stub
+		return provinciaRepository.findById_Provincia(id_provincia);
+	}
+
 }
