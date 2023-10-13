@@ -74,14 +74,14 @@ public class EstablecimientoController {
 	private ProvinciaRepository provinciaRepository;
 	
 	@GetMapping("/education")
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@ApiOperation(value = "Returns the current user profile")
 	public ResponseEntity getEducation() {
 		return ResponseEntity.ok(educationService.findAlleducation());
 	}
 
 	// Busca por ID de provincia
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@GetMapping("/findByIdProv/{id_provincia}")
 	public ResponseEntity findByProvincia(@PathVariable Long id_provincia) {
 		// Aquí deberías implementar la lógica para buscar establecimientos por
@@ -91,7 +91,7 @@ public class EstablecimientoController {
 	}
 
 	// Busca por ID de localidad
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@GetMapping("/findByIdLoc/{id_localidad}")
 	public ResponseEntity findByLocalidad(@PathVariable Long id_localidad) {
 		// Aquí deberías implementar la lógica para buscar establecimientos por
@@ -100,14 +100,14 @@ public class EstablecimientoController {
 		return ResponseEntity.ok(establecimientos);
 	}
 
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@GetMapping("/findByNombreProv/{nombre}")
 	public ResponseEntity findByNombreProvincia(@PathVariable String nombre) {
 		List<Establecimiento> establecimientos = educationService.findByNombreProvincia(nombre);
 		return ResponseEntity.ok(establecimientos);
 	}
 
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	@GetMapping("/findByNombreLocalidad/{nombre}")
 	public ResponseEntity findByNombreLocalidad(@PathVariable String nombre) {
 		List<Establecimiento> establecimientos = educationService.findByNombreLocalidad(nombre);
@@ -133,6 +133,7 @@ public class EstablecimientoController {
         return new ResponseEntity<>(nuevo, HttpStatus.CREATED);
 		}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> eliminarEstablecimiento(@PathVariable Long id) {
 	    // Verifica si la entidad existe antes de eliminarla
