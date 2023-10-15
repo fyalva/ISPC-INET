@@ -1,3 +1,4 @@
+// \ISPC_Pasantia\ISPC-INET\ISPCINET\src\app\app.component.ts
 import { Component } from '@angular/core';
 
 @Component({
