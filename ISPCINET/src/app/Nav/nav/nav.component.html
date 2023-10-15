@@ -1,15 +1,14 @@
-<p>nav guorks!</p>
-
+<div>
 <ul class="nav justify-content-end">
+   
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">¿Navega?</a>
+      <a class="nav-link" href="#">Registrarse</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">¿Nevega?</a>
-    </li>
-    <li class="nav-item">
-      <button *ngIf="!userLoginOn" type="button" class="btn btn-light">Iniciar sesión</button>
-      <button *ngIf="userLoginOn"   type="button" class="btn btn-light">Cerrar sesión</button>
+      <button *ngIf="!userLoginOn" type="button" class="btn btn-light" routerLink="/iniciar-sesion">Iniciar sesión</button>
+
+      <button *ngIf="userLoginOn"   type="button" class="btn btn-light" routerLink="/inicio">Cerrar sesión</button> 
     </li>
   </ul>
-
+ 
+</div>

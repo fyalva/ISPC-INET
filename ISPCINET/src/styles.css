@@ -1,2 +1,13 @@
 @import "../node_modules/font-awesome/css/font-awesome.css";
 /* You can add global styles to this file, and also import other style files */
+
+.ng-valid:not(form).ng-touched {
+    border: 5px solid #42A948;
+}
+
+.ng-invalid:not(form).ng-touched {
+    border: 5px solid #a9444a;
+
+}
+
+

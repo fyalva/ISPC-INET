@@ -1,0 +1,16 @@
+#login-component{
+    padding: 25px;
+    margin-bottom: 25px;
+
+}
+
+.form-control{
+    margin: 1em;
+    position: center;
+}
+
+.container {
+position:static;
+margin-bottom: 2em;
+margin-top: 2em;
+}
