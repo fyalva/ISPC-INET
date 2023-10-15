@@ -1,7 +1,14 @@
 <app-nav></app-nav>
 <p *ngIf="!userLoginOn">Usuario no autenticado</p>
 <p *ngIf="userLoginOn">Usuario autenticado</p>
-   
+
+<div *ngIf="userLoginOn">
+  <p>Nombre:{{userData?.name}} </p>
+  <p>Apellido:{{userData?.lastName}} </p>
+  <p>Email:{{userData?.email}} </p>
+
+</div>   
+
 <div class="text-bg-primary p-3" >
     <div class="container">
       <h6 class="display-9 font-weight-bold"> Encontrá rápidamente la institución que estás buscando </h6>
