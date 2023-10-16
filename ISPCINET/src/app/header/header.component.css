@@ -1,16 +1,3 @@
-.logo {
- float: left;
+.container {
+  margin-top: 1em;
 }
-
-
-.contenedor {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    margin-right: 10px;
-  }
-  
-
-  

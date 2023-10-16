@@ -1,6 +1,7 @@
-.nav {
-  margin-top: 100px;
+.contenedor {
+  align-items:flex-start
 }
+
 
 .btn {
   margin-right: 2em;
@@ -8,7 +9,8 @@
 
 .registro {
   padding: 1em;
-  align-items: baseline;
+  align-items: center;
+  align-content: center;
 }
 
 

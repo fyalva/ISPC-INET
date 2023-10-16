@@ -1,11 +1,10 @@
 .form-control{
-    margin: 1em;
     background-color: white;
 }
 
 .container {
 background-color: blue;
-padding: 10em;
+padding: 5em;
 }
 
 .card {
@@ -14,5 +13,8 @@ padding: 10em;
 }
 
 .btn {
-    align-items: end;
+    align-items: center;
+    margin: 1em;
 }
+
+

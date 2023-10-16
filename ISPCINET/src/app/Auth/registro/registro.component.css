@@ -1,0 +1,15 @@
+.container {
+background-color: blue;
+padding: 5em;
+
+}
+
+.card {
+    background-color: white;
+    padding-right: 2em;
+}
+
+.btn {
+    align-items: center;
+    margin: 1em;
+}

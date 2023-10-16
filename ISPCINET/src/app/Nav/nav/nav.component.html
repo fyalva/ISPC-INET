@@ -1,10 +1,10 @@
 <div>
 <ul class="nav justify-content-end">
-    <li class="nav-item">
+  <li class="nav-item d-flex align-items-center">
       <button *ngIf="!userLoginOn" type="button" class="btn btn-primary" routerLink="/iniciar-sesion">Iniciar sesión</button>
-      <button *ngIf="userLoginOn"   type="button" class="btn btn-info" routerLink="/inicio">Cerrar sesión</button> 
+      <button *ngIf="userLoginOn"   type="button" class="btn btn-info"  >Cerrar sesión</button> 
     </li>
-    <li class="nav-item">
+    <li class="nav-item d-flex align-items-center">
       <a *ngIf="!userLoginOn" class="registro" routerLink="/registro">Registrarse</a>
     </li>
   </ul>

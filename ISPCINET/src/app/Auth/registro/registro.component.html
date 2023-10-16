@@ -1,1 +1,110 @@
 <p>registro works!</p>
+<p>registro works!</p>
+
+<body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"> 
+          <h3>Vamos a crear tu cuenta</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form" class="form" (ngSubmit)="onEnviar($event, usuario)" >
+            <div class="form-group">
+                <div class="m-3">
+              <label for="nombre">Ingresá tu nombre</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Ingresa Tu nombre"
+              formControlName="nombre" [(ngModel)]="usuario.nombre" [class.border-danger]="NombreValid">
+            <div *ngIf="Nombre?.errors && Nombre?.touched">
+            <p *ngIf="Nombre?.hasError('required')" class="text-danger"> El nombre es requerido</p>
+            </div>
+                </div>
+            </div>
+  
+            <div class="m-3">
+              <label for="apellido" class="form-label">Ingresá tu apellido</label>
+              <input type="text" class="form-control" id="apellido" placeholder="Ingresa Tu apellido"
+              formControlName="apellido" [(ngModel)]="usuario.apellido" [class.border-danger]="ApellidoValid">
+            <div *ngIf="Apellido?.errors && Apellido?.touched">
+            <p *ngIf="Apellido?.hasError('required')" class="text-danger"> El apellido es requerido</p>
+            </div>
+            </div>
+  
+            <div class="m-3">
+              <label for="provincia" class="form-label">Ingresá tu provincia</label>
+              <input type="text" class="form-control" id="provincia" placeholder="Ingresá tu provincia"
+              formControlName="provincia" [(ngModel)]="usuario.provincia" [class.border-danger]="ProvinciaValid">
+            <div *ngIf="Provincia?.errors && Provincia?.touched">
+            <p *ngIf="Provincia?.hasError('required')" class="text-danger"> La provincia es requerida</p>
+            </div>
+  
+            </div> 
+            
+            <div class="m-3">
+              <label for="fechaNac" class="form-label">Ingresá tu fecha de nacimiento</label>
+              <input type="date" class="form-control" id="fechaNac" placeholder="Ingresa Tu fecha de nacimiento"
+              formControlName="fechaNac" [(ngModel)]="usuario.fechaNac" [class.border-danger]="FechaNacValid">
+            <div *ngIf="FechaNac?.errors && FechaNac?.touched">
+            <p *ngIf="FechaNac?.hasError('required')" class="text-danger"> La fecha de nacimiento es requerida</p>
+            </div>
+            </div>
+  
+  
+            <div class="m-3">
+              <label for="mail" class="form-label">Ingresá tu email</label>
+              <input type="email" class="form-control" id="mail" placeholder="Ingresa tu mail"
+              formControlName="mail" [(ngModel)]="usuario.mail" [class.border-danger]="MailValid">
+            <div *ngIf="Mail?.errors && Mail?.touched">
+            <p *ngIf="Mail?.hasError('required')" class="text-danger"> El mail es requerido</p>
+            </div>
+            </div>
+  
+  
+            <div class="m-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" id="password" class="form-control" placeholder="Ingresa tu contraseña"
+              formControlName="password1" [class.border-danger]="Password1Valid">
+              <div *ngIf="Password1?.errors && Password1?.touched">
+                <p *ngIf="Password1?.hasError('required')" class="text-danger"> La contraseña es requerida</p>
+              </div>
+            </div>
+  
+  
+            <div class="m-3">
+              <label for="password2" class="form-label">Repetí la contraseña</label>
+              <input type="password2" id="password2" class="form-control" placeholder="Ingresá nuevamente la contraseña"
+              formControlName="password2" [class.border-danger]="Password2Valid">
+              <div *ngIf="Password2?.errors && Password2?.touched">
+                <p *ngIf="Password2?.hasError('required')" class="text-danger"> La contraseña no coincide</p>
+              </div>
+            </div>
+
+            
+            <div class="m-3">
+                <label for="profesion" class="form-label"> ¿Cuál es su actividad? </label>
+                <input type="profesion" id="profesion" class="form-control" placeholder="Ingresa tu profesión"
+                formControlName="profesion" [class.border-danger]="ProfesionValid">
+                <div *ngIf="Profesion?.errors && Profesion?.touched">
+                  <p *ngIf="Profesion?.hasError('required')" class="text-danger"> Ingrese su profesión por favor</p>
+                </div>
+              </div>
+
+              <div class="m-3">
+                <label for="about" class="form-label"> Ingresá una descripción breve.</label>
+                <input type="about" id="about" class="form-control" placeholder="200 palabras como máximo"
+                formControlName="about" [class.border-danger]="AboutValid">
+                <div *ngIf="About?.errors && About?.touched">
+                  <p *ngIf="About?.hasError('required')" class="text-danger"> EL límite máximo es de 200 palabras.</p>
+                </div>
+              </div>
+           
+            <button type="submit" class="btn btn-primary" routerLink="/inicio" > Registrarme </button>
+          </form>
+        </div>
+    
+    </div>
+</div>
+      </div>
+    </div>
+  </body>
