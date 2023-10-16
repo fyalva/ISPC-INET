@@ -1,4 +1,14 @@
 .nav {
-  margin: 1%;
+  margin-top: 100px;
 }
+
+.btn {
+  margin-right: 2em;
+}
+
+.registro {
+  padding: 1em;
+  align-items: baseline;
+}
+
 

@@ -1,16 +1,18 @@
-#login-component{
-    padding: 25px;
-    margin-bottom: 25px;
-
-}
-
 .form-control{
     margin: 1em;
-    position: center;
+    background-color: white;
 }
 
 .container {
-position:static;
-margin-bottom: 2em;
-margin-top: 2em;
+background-color: blue;
+padding: 10em;
+}
+
+.card {
+    background-color: white;
+    padding-right: 2em;
+}
+
+.btn {
+    align-items: end;
 }

@@ -12,6 +12,8 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { NavComponent } from './Nav/nav/nav.component'; 
 import { from } from 'rxjs';
+import { CarouselComponent } from './carousel/carousel/carousel.component';
+import { RegistroComponent } from './Auth/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { from } from 'rxjs';
     DashboardComponent,
     LoginComponent,
     HeaderTopComponent,
-    NavComponent
+    NavComponent,
+    CarouselComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

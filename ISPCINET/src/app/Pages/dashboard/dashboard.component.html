@@ -1,14 +1,8 @@
 
 <app-nav></app-nav>
 
-<p *ngIf="!userLoginOn">Usuario no autenticado</p>
-<p *ngIf="userLoginOn">Usuario autenticado</p>
-
-<div *ngIf="userLoginOn">
-  <p>Nombre:{{userData?.name}} </p>
-  <p>Apellido:{{userData?.lastName}} </p>
-  <p>Email:{{userData?.email}} </p>
-</div>   
+<p *ngIf="!userLoginOn" class="authno">Usuario no autenticado</p>
+<p *ngIf="userLoginOn" class="auth">Usuario autenticado.   Nombre: {{userData?.name}}, {{userData?.lastName}}.</p> 
 
 <div class="text-bg-primary p-3" >
     <div class="container">
@@ -33,8 +27,15 @@
             <option value="2">Ciudades disponibles</option>
             <option value="3">Ciudades disponibles</option>
           </select>
-        </div>
+          
+        </div>      
+        
+        <div class="col-1">
+          <button type="submit" class="btn btn-light"  routerLink="..." >Buscar</button>
+        </div>       
       </div>
-    </div>
+    </div>       
   </div>
   </div>
+
+  

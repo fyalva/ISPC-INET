@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.loginService.currentUserLoginOn.subscribe ({
       next:(userLoginOn) => {
-        this.userLoginOn=this.userLoginOn;
+        this.userLoginOn=userLoginOn;
       }
     });     
     
@@ -33,3 +33,6 @@ export class DashboardComponent implements OnInit, OnDestroy{
   }
 
 }
+
+
+
