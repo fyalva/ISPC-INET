@@ -9,9 +9,11 @@ export class Usuario
   apellido:string="";
   provincia:string="";
   fechaNac:string="";
-  celular:string="";
   mail:string="";
-  password:string="";
+  password1:string="";
+  password2:string="";
+  profesion:string="";
+  about:string="";
   id:number=0;
   token: any;
 
@@ -25,7 +27,7 @@ export class Usuario
 
 export class UsuarioService {
 
- url="http://regres.in/api/users/1";
+ url="...";
 
  constructor(private http:HttpClient) { 
   console.log("servicio Usuarios funcionando");
