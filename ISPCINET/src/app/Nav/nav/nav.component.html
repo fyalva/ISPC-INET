@@ -5,7 +5,7 @@
       <button *ngIf="userLoginOn"   type="button" class="btn btn-info" routerLink="/inicio">Cerrar sesión</button> 
     </li>
     <li class="nav-item">
-      <a *ngIf="!userLoginOn" class="registro" href="#">Registrarse</a>
+      <a *ngIf="!userLoginOn" class="registro" routerLink="/registro">Registrarse</a>
     </li>
   </ul>
 </div>
