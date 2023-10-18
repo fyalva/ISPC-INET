@@ -30,6 +30,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -43,6 +44,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -144,5 +146,31 @@ public class EstablecimientoController {
 	        return new ResponseEntity<>("El establecimiento no se encontró en la base de datos", HttpStatus.NOT_FOUND);
 	    }
 	}
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PutMapping("/modificar/{id}")
+	public ResponseEntity<?> modificarEstablecimiento(@PathVariable Long id, @RequestBody Establecimiento updatedEstablecimiento) {
+	    // Verifica si el establecimiento con el ID proporcionado existe en la base de datos
+	    Optional<Establecimiento> existingEstablecimientoOptional = establecimientoRepository.findById(id);
+	    
+	    if (existingEstablecimientoOptional.isPresent()) {
+	        Establecimiento existingEstablecimiento = existingEstablecimientoOptional.get();
+
+	        // Actualiza los campos del establecimiento con los nuevos datos
+	        existingEstablecimiento.setName(updatedEstablecimiento.getName());
+	        existingEstablecimiento.setAdress(updatedEstablecimiento.getAdress());
+	        existingEstablecimiento.setProvincia(updatedEstablecimiento.getProvincia());
+	        existingEstablecimiento.setLocalidad(updatedEstablecimiento.getLocalidad());
+	        // Agrega más campos aquí que desees actualizar
+
+	        // Guarda el establecimiento actualizado en la base de datos
+	        Establecimiento updatedEstablecimientoEntity = establecimientoRepository.save(existingEstablecimiento);
+
+	        return new ResponseEntity<>(updatedEstablecimientoEntity, HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>("El establecimiento no se encontró en la base de datos", HttpStatus.NOT_FOUND);
+	    }
+	}
+	
 	
 }

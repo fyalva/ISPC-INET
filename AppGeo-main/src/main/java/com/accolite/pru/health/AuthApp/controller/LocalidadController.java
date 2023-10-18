@@ -57,7 +57,7 @@ public class LocalidadController {
 		}
 	}
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
     @PutMapping("modificar/{id}")
     public ResponseEntity<Localidad> modificarLocalidad(@PathVariable("id") Long id_localidad, @RequestBody Localidad localidadModificada) {
         // Buscar la localidad existente por su ID
