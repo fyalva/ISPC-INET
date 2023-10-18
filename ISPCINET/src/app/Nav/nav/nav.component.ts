@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
@@ -6,13 +6,17 @@ import { LoginService } from 'src/app/services/auth/login.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit , OnDestroy {
 
   userLoginOn: boolean=false;
   /* Indica que el usuario ingresa a la página Y NO ESTÁ
   LOGUEADO por defecto*/
 
   constructor(private loginService:LoginService) {}
+
+  ngOnDestroy(): void {
+      this.loginService.currentUserLoginOn.unsubscribe()
+  }
 
   ngOnInit(): void {
     this.loginService.currentUserLoginOn.subscribe(

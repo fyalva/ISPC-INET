@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit{
           this.loginError=errorData;
         },
         complete: () => {
-          console.info("Login completo");this.router.navigateByUrl('/inicio');
+          console.info("Login completo");
+          this.router.navigateByUrl('/inicio');
           this.loginForm.reset();
-
         }
       
       })

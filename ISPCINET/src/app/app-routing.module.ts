@@ -4,14 +4,11 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { SchoolsComponent } from './Pages/schools/schools.component';
 
-
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'escuelas', component: SchoolsComponent },
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio', component: DashboardComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },  
   { path: 'iniciar-sesion', component: LoginComponent }
-
 ];
 
 @NgModule({

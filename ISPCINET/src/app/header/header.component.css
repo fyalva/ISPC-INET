@@ -1,33 +1,3 @@
-.logo {
- float: left;
+.container {
+  margin-top: 1em;
 }
-
-
-.contenedor {
-    display: flex;
-    align-items: center; /* Alinea verticalmente */
-  }
-  
-  .logo {
-    margin-right: 10px; /* Agrega un espacio entre la imagen y el texto, si lo deseas */
-  }
-  
-
-  /* Estilos generales para pantallas grandes */
-/* ... */
-
-/* Media Query para pantallas pequeñas */
-@media (max-width: 575px) {
-    .Logo {
-      height:3em; /* Cambia el tamaño del logo para pantallas pequeñas */
-    }
-    .nav {
-      flex-direction: column; /* Cambia la dirección de los elementos de la barra de navegación */
-    }
-    .nav-item {
-      margin: 10px 0; /* Añade espacio entre los elementos de navegación */
-    }
-    /* Otros estilos específicos para pantallas pequeñas */
-    /* ... */
-  }
-  
