@@ -159,8 +159,7 @@ public class EstablecimientoController {
 	        // Actualiza los campos del establecimiento con los nuevos datos
 	        existingEstablecimiento.setName(updatedEstablecimiento.getName());
 	        existingEstablecimiento.setAdress(updatedEstablecimiento.getAdress());
-	        existingEstablecimiento.setProvincia(updatedEstablecimiento.getProvincia());
-	        existingEstablecimiento.setLocalidad(updatedEstablecimiento.getLocalidad());
+
 	        // Agrega más campos aquí que desees actualizar
 
 	        // Guarda el establecimiento actualizado en la base de datos
