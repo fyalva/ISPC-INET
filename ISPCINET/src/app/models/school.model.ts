@@ -2,6 +2,6 @@
 export interface School {
     id: number;
     name: string;
-    // Agrega más si es necesario
+    
   }
   

@@ -1,8 +1,8 @@
-// src/app/Pages/dashboard/dashboard.component.ts
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { User } from 'src/app/services/auth/user';
-import { DataService } from 'src/app/services/data/data.service'
+import { DataService } from 'src/app/services/data/data.service';
+import { Province, Locality, School } from 'src/app/models/province';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,10 +12,11 @@ import { DataService } from 'src/app/services/data/data.service'
 export class DashboardComponent implements OnInit {
   userLoginOn: boolean = false;
   userData?: User;
-  selectedProvince: string = '';
-  selectedCity: string = '';
-  provinces: any[] = [];
-  cities: any[] = [];
+  selectedProvince: number = 0;
+  selectedLocality: number = 0;
+  provinces: Province[] = [];
+  localities: Locality[] = [];
+  schools: School[] = [];
 
   constructor(
     private loginService: LoginService,
@@ -35,15 +36,31 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    // Cargar datos de provincias y ciudades
-    this.dataService.getProvincesAndCities().subscribe(data => {
-      this.provinces = data.provinces;
+    // Cargar datos de provincias
+    this.dataService.getProvinces().subscribe(provinces => {
+      this.provinces = provinces;
     });
   }
 
   onProvinceChange(): void {
-    // Filtrar ciudades según la provincia seleccionada
-    const selectedProvinceData = this.provinces.find(p => p.id === this.selectedProvince);
-    this.cities = selectedProvinceData ? selectedProvinceData.cities : [];
+    // Filtrar localidades según la provincia seleccionada
+    if (this.selectedProvince > 0) {
+      this.dataService.getLocalitiesByProvince(this.selectedProvince).subscribe(localities => {
+        this.localities = localities;
+      });
+    } else {
+      this.localities = [];
+    }
+  }
+
+  onLocalityChange(): void {
+    // Mostrar escuelas según la localidad seleccionada
+    if (this.selectedLocality > 0) {
+      this.dataService.getSchoolsByLocality(this.selectedLocality).subscribe(schools => {
+        this.schools = schools;
+      });
+    } else {
+      this.schools = [];
+    }
   }
 }
