@@ -8,7 +8,7 @@ export class Usuario
   nombre:string="";
   apellido:string="";
   provincia:string="";
-  fechaNac:string="";
+  nomUsu:string="";
   mail:string="";
   password1:string="";
   password2:string="";

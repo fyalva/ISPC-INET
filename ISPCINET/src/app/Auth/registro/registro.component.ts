@@ -39,7 +39,7 @@ export class RegistroComponent implements OnInit {
             nombre:['', [Validators.required]],
             apellido:['', [Validators.required]],
             provincia:['', [Validators.required]],
-            fechaNac:['', [Validators.required]],
+            nomUsu:['', [Validators.required]],
             celular:['', [Validators.required]],
             mail:['', [Validators.required]],
             password:['', [Validators.required]],
@@ -104,24 +104,9 @@ export class RegistroComponent implements OnInit {
   return this.form.get("apellido");
  }
 
- get FechaNac()
+ get NomUsu()
  {
-  return this.form.get("fechaNac");
- }
-
- get Provincia()
- {
-  return this.form.get("provincia");
- }
-
- get Profesion()
- {
-  return this.form.get("profesion");
- }
-
- get About()
- {
-  return this.form.get("about");
+  return this.form.get("nomUsu");
  }
 
  get MailValid()
@@ -149,27 +134,9 @@ export class RegistroComponent implements OnInit {
   return this.Password2?.touched && !this.Password2?.valid;
  } 
 
- get ProfesionValid()
+ get NomUsuValid()
  {
-  return this.Profesion?.touched && !this.Profesion?.valid;
+  return this.NomUsu?.touched && !this.NomUsu?.valid;
  } 
-
- get FechaNacValid()
- {
-  return this.FechaNac?.touched && !this.FechaNac?.valid;
- } 
-
- get ProvinciaValid()
- {
-  return this.Provincia?.touched && !this.Provincia?.valid;
- } 
-
- get AboutValid()
- {
-  return this.About?.touched && !this.About?.valid;
- } 
-
-
- 
 
 }
