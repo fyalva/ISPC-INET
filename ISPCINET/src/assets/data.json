@@ -1,7 +1,8 @@
 {
     "message": "Authenticacion OK",
     "id":"1",
-    "name": "Pedro",
+    "firstName": "Pedro",
     "lastName": "Pascal",
     "email": "pedropascal@gmail.com"
+    
 }

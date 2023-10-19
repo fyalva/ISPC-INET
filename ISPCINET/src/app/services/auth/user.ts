@@ -1,9 +1,13 @@
 export interface User {
     id: number;
-    name?: string;
-    lastName?: string,
     email: string;
+    firstName?: string;
+    lastName?: string,
+    password: string;
+    username: string;
     menssage?:string;
 }
 
 /* esto devuelve un USER */
+
+

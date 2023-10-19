@@ -36,15 +36,11 @@ export class RegistroComponent implements OnInit {
 
       this.form= this.formBuilder.group(
         {
-            nombre:['', [Validators.required]],
-            apellido:['', [Validators.required]],
-            provincia:['', [Validators.required]],
-            nomUsu:['', [Validators.required]],
-            celular:['', [Validators.required]],
-            mail:['', [Validators.required]],
-            password:['', [Validators.required]],
-            profesion:['', [Validators.required]],
-            about: ['', [Validators.required, validarMaximo200Palabras]]
+            firstName:['', [Validators.required]],
+            lastName:['', [Validators.required]],
+            username:['', [Validators.required]],
+            email:['', [Validators.required]],
+            password:['', [Validators.required]]
         }
       )
 
@@ -80,13 +76,9 @@ export class RegistroComponent implements OnInit {
     }
  };
 
- get Password1()
+ get Password()
  {
-  return this.form.get("password1");
- }
-
- get Password2() {
-  return this.form.get("password2");
+  return this.form.get("password");
  }
 
  get Mail()
@@ -94,19 +86,19 @@ export class RegistroComponent implements OnInit {
   return this.form.get("mail");
  }
 
- get Nombre()
+ get FirstName()
  {
-  return this.form.get("nombre");
+  return this.form.get("firstName");
  }
 
- get Apellido()
+ get LastName()
  {
-  return this.form.get("apellido");
+  return this.form.get("lastName");
  }
 
- get NomUsu()
+ get Username()
  {
-  return this.form.get("nomUsu");
+  return this.form.get("username");
  }
 
  get MailValid()
@@ -114,29 +106,24 @@ export class RegistroComponent implements OnInit {
   return this.Mail?.touched && !this.Mail?.valid;
  } 
 
- get NombreValid()
+ get FirstNameValid()
  {
-  return this.Nombre?.touched && !this.Nombre?.valid;
+  return this.FirstName?.touched && !this.FirstName?.valid;
  } 
 
- get ApellidoValid()
+ get LastNameValid()
  {
-  return this.Apellido?.touched && !this.Apellido?.valid;
+  return this.LastName?.touched && !this.LastName?.valid;
  } 
 
- get Password1Valid()
+ get PasswordValid()
  {
-  return this.Password1?.touched && !this.Password1?.valid;
+  return this.Password?.touched && !this.Password?.valid;
  } 
 
- get Password2Valid()
+ get UsernameValid()
  {
-  return this.Password2?.touched && !this.Password2?.valid;
- } 
-
- get NomUsuValid()
- {
-  return this.NomUsu?.touched && !this.NomUsu?.valid;
+  return this.Username?.touched && !this.Username?.valid;
  } 
 
 }

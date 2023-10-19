@@ -5,19 +5,17 @@ import { Observable } from 'rxjs';
 
 export class Usuario 
 {
-  nombre:string="";
-  apellido:string="";
-  provincia:string="";
-  nomUsu:string="";
+  firstName:string="";
+  lastName:string="";
+  username:string="";
   mail:string="";
-  password1:string="";
-  password2:string="";
-  profesion:string="";
-  about:string="";
+  password:string="";
   id:number=0;
   token: any;
 
   //acá ponemos los atributos del login. 
+
+
   
 }
 

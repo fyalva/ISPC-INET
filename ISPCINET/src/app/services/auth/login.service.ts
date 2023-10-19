@@ -10,7 +10,7 @@ import { User } from './user';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id:0, email:''});
+  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id:0, email:'', password:'', username:''});
   /* Utilizar sesion storage para que el usuario no se tenga que loguear a cada rato */
 
   constructor(private http: HttpClient) { }
