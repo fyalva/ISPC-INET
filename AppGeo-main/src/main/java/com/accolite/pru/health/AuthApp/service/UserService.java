@@ -115,14 +115,28 @@ public class UserService {
 	 * @return list of roles for the new user
 	 */
 	private Set<Role> getRolesForNewUser(Boolean isToBeMadeAdmin) {
-		Set<Role> newUserRoles = new HashSet<>(roleService.findAll());
+		/*Set<Role> newUserRoles = new HashSet<>(roleService.findAll());
 		if (!isToBeMadeAdmin) {
 			newUserRoles.removeIf(Role::isAdminRole);
 		}else {
 			newUserRoles.removeIf(Role::isUserRole);
 		}
 		logger.info("Setting user roles: " + newUserRoles);
-		return newUserRoles;
+		return newUserRoles;*/
+		 Set<Role> newUserRoles = new HashSet<>();
+		    
+		    for (Role role : roleService.findAll()) {
+		        if (!isToBeMadeAdmin && !role.isAdminRole()) {
+		            newUserRoles.add(role);
+		        }
+		        
+		        if (isToBeMadeAdmin && !role.isUserRole()) {
+		            newUserRoles.add(role);
+		        }
+		    }
+		    
+		    logger.info("Setting user roles: " + newUserRoles);
+		    return newUserRoles;
 
 	}
 
@@ -141,4 +155,5 @@ public class UserService {
 		logger.info("Removing refresh token associated with device [" + userDevice + "]");
 		refreshTokenService.deleteById(userDevice.getRefreshToken().getId());
 	}
+		 
 }

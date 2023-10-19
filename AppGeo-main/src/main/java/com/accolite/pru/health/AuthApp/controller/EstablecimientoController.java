@@ -160,8 +160,6 @@ public class EstablecimientoController {
 	        existingEstablecimiento.setName(updatedEstablecimiento.getName());
 	        existingEstablecimiento.setAdress(updatedEstablecimiento.getAdress());
 
-	        // Agrega más campos aquí que desees actualizar
-
 	        // Guarda el establecimiento actualizado en la base de datos
 	        Establecimiento updatedEstablecimientoEntity = establecimientoRepository.save(existingEstablecimiento);
 

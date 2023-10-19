@@ -34,4 +34,18 @@ public class LocalidadService {
 		return localidadRepository.findByNombre(nombre);
 	}
 
+	public Object findAllLocalidades() {
+		// TODO Auto-generated method stub
+		return localidadRepository.findAll();
+	}
+
+	/*public List<Localidad> findByProvinciaId(Long id_provincia) {
+		return localidadRepository.findLocalidadNamesByProvinciaId(id_provincia);
+	}*/
+
+	public List<String> findLocalidadNamesByProvinciaId(Long id_provincia) {
+		// TODO Auto-generated method stub
+		return localidadRepository.findLocalidadNamesByProvinciaId(id_provincia);
+	}
+
 }

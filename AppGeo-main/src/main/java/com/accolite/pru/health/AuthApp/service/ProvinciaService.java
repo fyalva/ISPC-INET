@@ -33,4 +33,9 @@ public class ProvinciaService {
 		return provinciaRepository.findById_Provincia(id_provincia);
 	}
 
+	public Object findAllProvincias() {
+		// TODO Auto-generated method stub
+		return provinciaRepository.findAll();
+	}
+
 }
