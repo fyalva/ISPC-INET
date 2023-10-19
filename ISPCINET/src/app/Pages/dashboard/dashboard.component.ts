@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/auth/login.service';
-import { User } from 'src/app/services/auth/user';
-import { DataService } from 'src/app/services/data/data.service';
-import { Province, Locality, School } from 'src/app/models/province';
+import { DataService } from '../../services/data/data.service';
+import { Provincia } from '../../models/provincia.model';
+import { Localidad } from '../../models/localidad.model';
+import { Escuela } from '../../models/escuela.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,55 +10,49 @@ import { Province, Locality, School } from 'src/app/models/province';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  userLoginOn: boolean = false;
-  userData?: User;
-  selectedProvince: number = 0;
-  selectedLocality: number = 0;
-  provinces: Province[] = [];
-  localities: Locality[] = [];
-  schools: School[] = [];
+  selectedProvince: number | null = null;
+  selectedLocality: number | null = null;
 
-  constructor(
-    private loginService: LoginService,
-    private dataService: DataService
-  ) {}
+  provinces: Provincia[] = [];
+  localities: Localidad[] = [];
+  schools: Escuela[] = [];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.loginService.currentUserLoginOn.subscribe({
-      next: (userLoginOn) => {
-        this.userLoginOn = userLoginOn;
+    // Cargar provincias al iniciar el componente
+    this.dataService.getProvinces().subscribe(
+      (provinces) => {
+        console.log('Provinces:', provinces);
+        this.provinces = Array.isArray(provinces) ? provinces : [];
+      },
+      (error) => {
+        console.error('Error getting provinces:', error);
       }
-    });
-
-    this.loginService.currentUserData.subscribe({
-      next: (userData) => {
-        this.userData = userData;
-      }
-    });
-
-    // Cargar datos de provincias
-    this.dataService.getProvinces().subscribe(provinces => {
-      this.provinces = provinces;
-    });
+    );
   }
 
   onProvinceChange(): void {
-    console.log('Selected Province:', this.selectedProvince);
+    if (this.selectedProvince) {
+      console.log('Selected Province Id:', this.selectedProvince);
   
-    if (this.selectedProvince > 0) {
-      this.dataService.getLocalitiesByProvince(this.selectedProvince).subscribe(localities => {
-        console.log('Localities:', localities);
-        this.localities = localities;
-      });
-    } else {
-      this.localities = [];
+      // Obtén las localidades para la provincia seleccionada
+      this.dataService.getLocalitiesByProvince(this.selectedProvince).subscribe(
+        (localities) => {
+          console.log('Localities for province:', localities);
+          this.localities = localities; // Asigna las localidades obtenidas a this.localities
+        },
+        (error) => {
+          console.error('Error getting localities:', error);
+        }
+      );
     }
   }
   
 
   onLocalityChange(): void {
     // Mostrar escuelas según la localidad seleccionada
-    if (this.selectedLocality > 0) {
+    if (this.selectedLocality) {
       this.dataService.getSchoolsByLocality(this.selectedLocality).subscribe(schools => {
         this.schools = schools;
       });

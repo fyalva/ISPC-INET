@@ -1,0 +1,15 @@
+{
+  "escuelas": [
+    {"id": 1, "nombre": "Escuela 1", "adress": "Dirección 1", "id_localidad": 1},
+    {"id": 2, "nombre": "Escuela 2", "adress": "Dirección 2", "id_localidad": 1},
+    {"id": 3, "nombre": "Escuela 3", "adress": "Dirección 3", "id_localidad": 2},
+    {"id": 4, "nombre": "Escuela 4", "adress": "Dirección 4", "id_localidad": 2},
+    {"id": 5, "nombre": "Escuela 5", "adress": "Dirección 5", "id_localidad": 3},
+    {"id": 6, "nombre": "Escuela 6", "adress": "Dirección 6", "id_localidad": 3},
+    {"id": 7, "nombre": "Escuela 7", "adress": "Dirección 7", "id_localidad": 4},
+    {"id": 8, "nombre": "Escuela 8", "adress": "Dirección 8", "id_localidad": 4},
+    {"id": 9, "nombre": "Escuela 9", "adress": "Dirección 9", "id_localidad": 5},
+    {"id": 10, "nombre": "Escuela 10", "adress": "Dirección 10", "id_localidad": 5}
+  ]
+}
+

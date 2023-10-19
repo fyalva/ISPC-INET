@@ -1,55 +1,36 @@
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map, shareReplay } from 'rxjs/operators';
-import { Province, Locality, School } from 'src/app/models/province';
-import { tap } from 'rxjs/operators';
+  import { Injectable } from '@angular/core';
+  import { HttpClient } from '@angular/common/http';
+  import { Observable } from 'rxjs';
+  import { Provincia } from '../../models/provincia.model';
+  import { Localidad } from '../../models/localidad.model';
+  import { Escuela } from '../../models/escuela.model';
+  import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class DataService {
-  private apiUrl = '../../../assets/data.json';
-  private provinces$?: Observable<Province[]>;
+  @Injectable({
+    providedIn: 'root',
+  })
+  export class DataService {
+    private apiUrl = '../../../assets'; 
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  private fetchProvinces(): Observable<Province[]> {
-    return this.http.get<{ provinces: Province[] }>(this.apiUrl).pipe(
-      tap(data => console.log('Fetched raw data:', data)),
-      map(data => data.provinces),
-      catchError((error: any) => {
-        console.error('Error in DataService:', error);
-        return throwError(error);
-      }),
-      shareReplay(1)
-    );
-  }
-
-  getProvinces(): Observable<Province[]> {
-    if (!this.provinces$) {
-      this.provinces$ = this.fetchProvinces();
+    getProvinces(): Observable<Provincia[]> {
+      const url = `${this.apiUrl}/provincias.json`;
+      console.log('Ruta de provincias:', url);
+      return this.http.get<{provincias: Provincia[]}>(url).pipe(
+        map(data => data.provincias)
+      );
     }
-    return this.provinces$;
+    
+    getLocalitiesByProvince(provinceId: number): Observable<Localidad[]> {
+      const url = `${this.apiUrl}/localidades.json`;
+      console.log('URL for localities:', url); 
+      return this.http.get<{localidades: Localidad[]}>(url).pipe(
+        map(data => data.localidades.filter(loc => loc.id_provincia === provinceId))
+      );
+    }
+    
+    getSchoolsByLocality(localityId: number): Observable<Escuela[]> {
+      return this.http.get<Escuela[]>(`${this.apiUrl}/escuelas.json?localityId=${localityId}`);
+    }
   }
-
-  getLocalitiesByProvince(provinceId: number): Observable<Locality[]> {
-    return this.getProvinces().pipe(
-      map(provinces => {
-        const selectedProvince = provinces.find(p => p.id_provincia === provinceId);
-        return selectedProvince ? selectedProvince.localidades : [];
-      }),
-      tap(localities => console.log('Localities:', localities))
-    );
-  }
-
-  getSchoolsByLocality(localityId: number): Observable<School[]> {
-    return this.getProvinces().pipe(
-      map(provinces => {
-        const allLocalities = provinces.flatMap(p => p.localidades);
-        const selectedLocality = allLocalities.find(l => l.id_localidad === localityId);
-        return selectedLocality ? selectedLocality.schools : [];
-      })
-    );
-  }
-}

@@ -1,20 +1,18 @@
 // src/app/services/school.service.ts
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { School } from '../../models/school.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Escuela } from '../../models/escuela.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SchoolService {
-  getSchools(): Observable<School[]> {
-    // Devuelve una lista hardcodeada de escuelas
-    const schools: School[] = [
-      { id: 1, name: 'Escuela 1' },
-      { id: 2, name: 'Escuela 2' },
-      { id: 3, name: 'Escuela 3' },
-      // Agrega más escuelas según sea necesario
-    ];
-    return of(schools);
+  private apiUrl = '../../../assets/escuelas.json';
+
+  constructor(private http: HttpClient) {}
+
+  getSchools(): Observable<Escuela[]> {
+    return this.http.get<Escuela[]>(this.apiUrl);
   }
 }
