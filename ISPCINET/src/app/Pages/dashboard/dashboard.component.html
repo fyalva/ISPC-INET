@@ -12,6 +12,7 @@
           <option *ngFor="let province of provinces" [value]="province.id_provincia">{{ province.nombre }}</option>
         </select>
       </div>
+    
       <div class="col">
         <select class="form-select" [(ngModel)]="selectedLocality" name="locality" (change)="onLocalityChange()">
           <option value="" disabled selected>Ciudad</option>
@@ -19,7 +20,8 @@
         </select>
       </div>
       <div class="col">
-        <!-- Agrega el botón o enlace para navegar a la página de escuelas -->
+        
+        
         <button [routerLink]="['/escuelas']" style="display: block !important;">Buscar</button>
       </div>
     </div>

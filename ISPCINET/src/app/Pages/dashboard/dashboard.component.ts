@@ -43,15 +43,18 @@ export class DashboardComponent implements OnInit {
   }
 
   onProvinceChange(): void {
-    // Filtrar localidades según la provincia seleccionada
+    console.log('Selected Province:', this.selectedProvince);
+  
     if (this.selectedProvince > 0) {
       this.dataService.getLocalitiesByProvince(this.selectedProvince).subscribe(localities => {
+        console.log('Localities:', localities);
         this.localities = localities;
       });
     } else {
       this.localities = [];
     }
   }
+  
 
   onLocalityChange(): void {
     // Mostrar escuelas según la localidad seleccionada
