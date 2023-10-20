@@ -23,12 +23,26 @@
     }
     
     getLocalitiesByProvince(provinceId: number): Observable<Localidad[]> {
+      console.log('getLocalitiesByProvince called with:', provinceId);
       const url = `${this.apiUrl}/localidades.json`;
       console.log('URL for localities:', url); 
       return this.http.get<{localidades: Localidad[]}>(url).pipe(
-        map(data => data.localidades.filter(loc => loc.id_provincia === provinceId))
+        map(data => {
+          console.log('Data received:', data);
+          const localities = data.localidades.filter(loc => {
+            // Convierte loc.id_provincia y provinceId a números antes de compararlos
+            const locProvinceId = Number(loc.id_provincia);
+            const numProvinceId = Number(provinceId);
+            console.log('Comparing:', locProvinceId, numProvinceId); // Nueva línea agregada
+            return locProvinceId === numProvinceId;
+          });
+          console.log('Filtered localities:', localities);
+          return localities;
+        })
       );
     }
+    
+    
     
     getSchoolsByLocality(localityId: number): Observable<Escuela[]> {
       return this.http.get<Escuela[]>(`${this.apiUrl}/escuelas.json?localityId=${localityId}`);

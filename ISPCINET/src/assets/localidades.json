@@ -3,12 +3,12 @@
     { "id_localidad": 1, "nombre": "La Plata", "id_provincia": 1 },
     { "id_localidad": 2, "nombre": "Mar del Plata", "id_provincia": 1 },
     { "id_localidad": 3, "nombre": "Bahía Blanca", "id_provincia": 1 },
-    { "id_localidad": 4, "nombre": "Córdoba Capital", "id_provincia": 2 },
-    { "id_localidad": 5, "nombre": "Villa María", "id_provincia": 2 },
-    { "id_localidad": 6, "nombre": "Río Cuarto", "id_provincia": 2 },
-    { "id_localidad": 7, "nombre": "CABA 1", "id_provincia": 3 },
-    { "id_localidad": 8, "nombre": "CABA 2", "id_provincia": 3 },
-    { "id_localidad": 9, "nombre": "CABA 3", "id_provincia": 3 },
+    { "id_localidad": 4, "nombre": "Córdoba Capital", "id_provincia": 5 },
+    { "id_localidad": 5, "nombre": "Villa María", "id_provincia": 5 },
+    { "id_localidad": 6, "nombre": "Río Cuarto", "id_provincia": 5 },
+    { "id_localidad": 7, "nombre": "Trelew", "id_provincia": 4 },
+    { "id_localidad": 8, "nombre": "Rawson", "id_provincia": 4 },
+    { "id_localidad": 9, "nombre": "Puerto Madryn", "id_provincia": 4 },
     { "id_localidad": 10, "nombre": "San Isidro", "id_provincia": 1 }
   ]
 }

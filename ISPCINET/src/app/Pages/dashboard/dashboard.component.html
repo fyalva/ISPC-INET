@@ -15,11 +15,12 @@
       </div>
     
       <div class="col">
-        <select class="form-select" [(ngModel)]="selectedLocality" name="locality" (change)="onLocalityChange()">
+
+        <select class="form-select" [(ngModel)]="selectedLocality" (change)="onLocalityChange()">
           <option value="" disabled selected>Ciudad</option>
           <option *ngFor="let loc of localities" [value]="loc.id_localidad">{{ loc.nombre }}</option>
         </select>
-      </div>
+        </div>
 
       <div class="col">
         <button [routerLink]="['/escuelas']" style="display: block !important;">Buscar</button>

@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   schools: Escuela[] = [];
 
   constructor(private dataService: DataService) { }
-
+  
   ngOnInit(): void {
     // Cargar provincias al iniciar el componente
     this.dataService.getProvinces().subscribe(
@@ -49,9 +49,8 @@ export class DashboardComponent implements OnInit {
     }
   }
   
-
   onLocalityChange(): void {
-    // Mostrar escuelas según la localidad seleccionada
+    console.log('onLocalityChange called with:', this.selectedLocality); 
     if (this.selectedLocality) {
       this.dataService.getSchoolsByLocality(this.selectedLocality).subscribe(schools => {
         this.schools = schools;
