@@ -9,7 +9,8 @@
     {"id": 7, "nombre": "Escuela 7", "adress": "Dirección 7", "id_localidad": 4},
     {"id": 8, "nombre": "Escuela 8", "adress": "Dirección 8", "id_localidad": 4},
     {"id": 9, "nombre": "Escuela 9", "adress": "Dirección 9", "id_localidad": 5},
-    {"id": 10, "nombre": "Escuela 10", "adress": "Dirección 10", "id_localidad": 5}
+    {"id": 10, "nombre": "Escuela 10", "adress": "Dirección 10", "id_localidad": 5},
+    {"id": 11, "nombre": "Escuela 11", "adress": "Dirección 11", "id_localidad": 1}
   ]
 }
 

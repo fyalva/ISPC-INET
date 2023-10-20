@@ -12,10 +12,13 @@ import { Escuela } from '../../models/escuela.model';
 export class DashboardComponent implements OnInit {
   selectedProvince: number | null = null;
   selectedLocality: number | null = null;
+  selectedLocalityName: string | null = null;
+  showSchools = false;
 
   provinces: Provincia[] = [];
   localities: Localidad[] = [];
   schools: Escuela[] = [];
+ 
 
   constructor(private dataService: DataService) { }
   
@@ -52,11 +55,29 @@ export class DashboardComponent implements OnInit {
   onLocalityChange(): void {
     console.log('onLocalityChange called with:', this.selectedLocality); 
     if (this.selectedLocality) {
+      let selectedLocality = this.localities.find(loc => loc.id_localidad === this.selectedLocality);
+      this.selectedLocalityName = selectedLocality ? selectedLocality.nombre : null;
       this.dataService.getSchoolsByLocality(this.selectedLocality).subscribe(schools => {
         this.schools = schools;
       });
     } else {
       this.schools = [];
     }
+  }
+
+  onSearch(): void {
+    console.log('onSearch called with:', this.selectedLocality); 
+    if (this.selectedLocality) {
+      this.dataService.getSchoolsByLocality(this.selectedLocality).subscribe(schools => {
+        this.schools = schools;
+      });
+    } else {
+      this.schools = [];
+    }
+  }
+
+
+  onShowSchools() {
+    this.showSchools = true;
   }
 }
