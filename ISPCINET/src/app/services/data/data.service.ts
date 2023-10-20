@@ -5,6 +5,8 @@
   import { Localidad } from '../../models/localidad.model';
   import { Escuela } from '../../models/escuela.model';
   import { map } from 'rxjs/operators';
+  import { tap } from 'rxjs/operators';
+
 
   @Injectable({
     providedIn: 'root',
@@ -45,6 +47,12 @@
     
     
     getSchoolsByLocality(localityId: number): Observable<Escuela[]> {
-      return this.http.get<Escuela[]>(`${this.apiUrl}/escuelas.json?localityId=${localityId}`);
+      return this.http.get<{escuelas: Escuela[]}>(`${this.apiUrl}/escuelas.json`).pipe(
+        map(data => data.escuelas.filter(school => Number(school.id_localidad) === Number(localityId))),
+        tap(schools => console.log('Schools:', schools))
+      );
     }
+    
+    
   }
+  

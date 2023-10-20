@@ -36,11 +36,11 @@ export class DashboardComponent implements OnInit {
     if (this.selectedProvince) {
       console.log('Selected Province Id:', this.selectedProvince);
   
-      // Obtén las localidades para la provincia seleccionada
+      
       this.dataService.getLocalitiesByProvince(this.selectedProvince).subscribe(
         (localities) => {
           console.log('Localities for province:', localities);
-          this.localities = localities; // Asigna las localidades obtenidas a this.localities
+          this.localities = localities; 
         },
         (error) => {
           console.error('Error getting localities:', error);

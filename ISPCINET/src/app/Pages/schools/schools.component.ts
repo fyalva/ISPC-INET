@@ -1,22 +1,41 @@
-// src/app/Pages/schools/schools.component.ts
+// schools.component.ts
+
 import { Component, OnInit } from '@angular/core';
-import { SchoolService } from 'src/app/services/schools/school.service';
-import { Escuela } from 'src/app/models/escuela.model';
+import { SchoolService } from '../../services/schools/school.service';
 import { Location } from '@angular/common';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-schools',
   templateUrl: './schools.component.html',
-  styleUrls: ['./schools.component.css']
+  styleUrls: ['./schools.component.css'],
 })
 export class SchoolsComponent implements OnInit {
-  schools: Escuela[] = [];
+  schools: any[] = []; // Ajusta el tipo según la estructura real de tus datos
 
-  constructor(private schoolService: SchoolService, private location: Location) {}
+  constructor(
+    private schoolService: SchoolService,
+    private location: Location,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit(): void {
-    this.schoolService.getSchools().subscribe(schools => {
-      this.schools = schools;
+    this.sharedService.getSelectedLocality().subscribe({
+      next: (selectedLocality: number | null) => {
+        if (selectedLocality !== null) {
+          this.schoolService.getSchools(selectedLocality).subscribe({
+            next: (schools) => {
+              this.schools = schools;
+            },
+            error: (error) => {
+              console.error('Error getting schools:', error);
+            },
+          });
+        }
+      },
+      error: (error) => {
+        console.error('Error getting selected locality:', error);
+      },
     });
   }
 

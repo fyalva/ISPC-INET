@@ -1,5 +1,6 @@
 export interface Escuela {
   id: number;
   name: string;
-  localityId: number;
+  id_localidad: number;
+
 }

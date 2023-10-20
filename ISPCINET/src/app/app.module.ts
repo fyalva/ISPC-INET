@@ -12,6 +12,8 @@ import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { NavComponent } from './Nav/nav/nav.component';
+import { SchoolsModule } from '../app/schools/schools.module'; 
+import { CommonModule } from '@angular/common'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NavComponent } from './Nav/nav/nav.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule,
+    CommonModule, 
+    SchoolsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
