@@ -1,0 +1,89 @@
+<!-- login button redirects to login modal -->
+<div class="section" id="loginModal">
+
+  <div class="container">
+    <div class="row full-height justify-content-center">
+      <div class="col-12 text-center align-self-center py-5">
+        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+          <div class="card-front card-3d-wrap">
+            <!-- form 1 -->
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+              <!-- maybe add action and method? -->
+              <div class="center-wrap">
+                <div class="section text-center">
+                  <h4 class="mb-4 pb-3">&lt; iniciar sesión &gt;</h4>
+                  <!-- campo 1 -->
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      pattern="[^ @]*@[^ @]*"
+                      name="email"
+                      class="form-style"
+                      placeholder="email"
+                      id="email"
+                      autocomplete="off"
+                      formControlName="email"
+                      [(ngModel)]="person.email"
+                    />
+                    <i class="input-icon uil uil-at"></i>
+                  </div>
+                  <!-- logica email -->
+                  <div *ngIf="Email?.errors && Email?.touched">
+                    <p *ngIf="Email?.hasError('required')" class="error">
+                      El e-mail es requerido.
+                    </p>
+                    <p *ngIf="Email?.hasError('email')" class="error">
+                      El formato del e-mail debe ser válido.
+                      <br />
+                      email@example.com
+                    </p>
+                  </div>
+                  <br />
+                  <!--  -->
+                  <!-- campo 2 -->
+                  <div class="form-group mt-2">
+                    <input
+                      type="password"
+                      formControlName="password"
+                      class="form-style"
+                      placeholder="contraseña"
+                      id="password"
+                      autocomplete="off"
+                      formControlName="password"
+                      [(ngModel)]="person.password"
+                    />
+                    <i class="input-icon uil uil-lock-alt"></i>
+                  </div>
+                  <!-- logica pw -->
+                  <div *ngIf="Password?.errors && Password?.touched">
+                    <p *ngIf="Password?.hasError('required')" class="error">
+                      La contraseña es requerida.
+                    </p>
+                    <p *ngIf="Password?.errors?.['minLength']" class="error">
+                      La contraseña debe ser de 7 o más caracteres.
+                    </p>
+                  </div>
+                  <br />
+                  <!--  -->
+                  <input
+                    class="btn mt-4"
+                    type="submit"
+                    value="Continuar"
+                    [disabled]="Email?.hasError('required') || Password?.hasError('required')"
+                  /><br />
+                  <br />
+                  <button
+                  type="button "
+                  class="btn-close btn-close-white"
+                  routerLink="/"
+                ></button>
+                </div>
+              </div>
+            </form>
+            <!-- fin form 1 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

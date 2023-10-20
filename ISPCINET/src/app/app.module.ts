@@ -10,10 +10,8 @@ import { HeaderTopComponent } from './header/header-top/header-top.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
-import { LoginComponent } from './Auth/login/login.component';
+import { LoginmodalComponent } from './Auth/loginmodal/loginmodal.component';
 import { NavComponent } from './Nav/nav/nav.component';
-import { SchoolsModule } from '../app/schools/schools.module'; 
-import { CommonModule } from '@angular/common'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +19,7 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
-    LoginComponent,
+    LoginmodalComponent,
     HeaderTopComponent,
     NavComponent
   ],
@@ -30,9 +28,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    CommonModule, 
-    SchoolsModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

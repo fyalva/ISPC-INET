@@ -25,7 +25,7 @@
       ]
     },
     {
-      "id_provincia": 3,
+      "id_provincia": 2,
       "nombre": "Córdoba",
       "localidades": [
         {
@@ -38,7 +38,7 @@
           ]
         },
         {
-          "id_localidad": 3,
+          "id_localidad": 4,
           "nombre": "Villa María",
           "schools": [
             {"id": 10, "name": "Escuela 10"},
@@ -49,8 +49,8 @@
       ]
     },
     {
-      "id_provincia": 4,
-      "nombre": "Trelew",
+      "id_provincia": 3,
+      "nombre": "Ciudad Autónoma de Buenos Aires",
       "localidades": [
         {"id_localidad": 5, "nombre": "Caba 1"},
         {"id_localidad": 6, "nombre": "Caba 2"},
