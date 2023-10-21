@@ -1,7 +1,7 @@
 // src/app/Pages/schools/schools.component.ts
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from 'src/app/services/schools/school.service';
-import { School } from 'src/app/models/school.model';
+import { Establecimiento } from 'src/app/models/establecimiento.model';
 import { Location } from '@angular/common';
 
 @Component({
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./schools.component.css']
 })
 export class SchoolsComponent implements OnInit {
-  schools: School[] = [];
+  schools: Establecimiento[] = [];
 
   constructor(private schoolService: SchoolService, private location: Location) {}
 

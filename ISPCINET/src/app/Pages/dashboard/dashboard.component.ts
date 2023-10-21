@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data/data.service';
 import { Provincia } from '../../models/provincia.model';
 import { Localidad } from '../../models/localidad.model';
-import { Escuela } from '../../models/escuela.model';
+import { Establecimiento} from '../../models/establecimiento.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   provinces: Provincia[] = [];
   localities: Localidad[] = [];
-  schools: Escuela[] = [];
+  schools: Establecimiento[] = [];
  
 
   constructor(private dataService: DataService) { }

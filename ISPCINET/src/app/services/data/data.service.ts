@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Provincia } from '../../models/provincia.model';
 import { Localidad } from '../../models/localidad.model';
-import { Escuela } from '../../models/escuela.model';
+import { Establecimiento } from '../../models/establecimiento.model';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 
@@ -46,8 +46,8 @@ export class DataService {
   
   
   
-  getSchoolsByLocality(localityId: number): Observable<Escuela[]> {
-    return this.http.get<{escuelas: Escuela[]}>(`${this.apiUrl}/escuelas.json`).pipe(
+  getSchoolsByLocality(localityId: number): Observable<Establecimiento[]> {
+    return this.http.get<{escuelas: Establecimiento[]}>(`${this.apiUrl}/escuelas.json`).pipe(
       map(data => data.escuelas.filter(school => Number(school.id_localidad) === Number(localityId))),
       tap(schools => console.log('Schools:', schools))
     );
