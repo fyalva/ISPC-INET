@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, catchError, BehaviorSubject, tap } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError, catchError, BehaviorSubject, tap, map } from 'rxjs';
 import { User } from './user';
 
 @Injectable({
@@ -10,22 +10,51 @@ import { User } from './user';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id:0, email:'', password:'', username:''});
+  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id: 0, email:'', password:''});
   /* Utilizar sesion storage para que el usuario no se tenga que loguear a cada rato */
 
-  constructor(private http: HttpClient) { }
+  /*constructor(private http: HttpClient) { }*/
 
-  login(credentials:LoginRequest):Observable<User>{
-    return this.http.get<User>('././assets/data.json').pipe(
-      tap ( (userData: User) => {
-        this.currentUserData.next(userData);
-        this.currentUserLoginOn.next(true);
-      }),
-      catchError(this.handleError)
+ 
+  url = 'https://fakestoreapi.com';
+  currentUserSubject: BehaviorSubject<any>;
+  sessionStorage: any;
+      /*linkear*/
+
+
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<any>(
+      JSON.parse(sessionStorage.getItem('currentUser') || '{}')
     );
   }
 
+  httpOp = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  login(email: string, password: string): Observable<any> {
+    const body = {
+      deviceInfo: {
+        deviceId: '1',
+        deviceType: 'DEVICE_TYPE_ANDROID',
+        notificationToken: 'Non',
+      },
+      email: email,
+      password: password,
+    };
+
   /*desde acá nos comunicamos a la Api reemplazando data por url*/
+
+  return this.http.post(`${this.url}/users`, body, this.httpOp).pipe(map(info=>{
+    sessionStorage
+    .setItem('currentUser', JSON.stringify(info));
+    //this.currentUserData.next(info);
+    console.log("authentication service running..." + JSON.stringify(info));
+    return info;
+  }));
+}
 
   private handleError(error:HttpErrorResponse){
     if(error.status===0){
@@ -47,4 +76,6 @@ export class LoginService {
   }
 
 }
+
+
 

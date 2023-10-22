@@ -3,6 +3,7 @@
     "id":"1",
     "firstName": "Pedro",
     "lastName": "Pascal",
-    "email": "pedropascal@gmail.com"
+    "email": "pedropascal@gmail.com",
+    "password": "1234"
     
 }

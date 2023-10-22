@@ -15,7 +15,7 @@ currentUser: Observable<Usuario>;
 //loggedIn: BehaviorSubject<boolean>;
 
 
-url="..."
+url='https://fakestoreapi.com'
   loggedIn: any;
 
   constructor(private http:HttpClient) { 
@@ -24,7 +24,8 @@ url="..."
     this.currentUserSubject = new 
     BehaviorSubject<Usuario> (JSON.parse(localStorage.getItem('currentUser') || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
-    //this.loggedIn: new BehaviorSubject<boolean> (false);
+    
+    this.loggedIn; new BehaviorSubject<boolean> (false);
   }
 
   login(usuario: Usuario): Observable<any>{

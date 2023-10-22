@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 
 export class Usuario 
 {
-  firstName:string="";
-  lastName:string="";
+  firstname:string="";
+  lastname:string="";
+  /*acá también cuando salgo de la api de prueba tengo que modificar
+  lastName era el correcto*/
   username:string="";
-  mail:string="";
+  email:string="";
   password:string="";
   id:number=0;
   token: any;
@@ -25,7 +27,7 @@ export class Usuario
 
 export class UsuarioService {
 
- url="...";
+ url="https://fakestoreapi.com/users";
 
  constructor(private http:HttpClient) { 
   console.log("servicio Usuarios funcionando");

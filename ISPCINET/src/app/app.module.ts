@@ -15,6 +15,7 @@ import { from } from 'rxjs';
 import { CarouselComponent } from './carousel/carousel/carousel.component';
 import { RegistroComponent } from './Auth/registro/registro.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

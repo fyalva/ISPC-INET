@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
 
   loginError:string="";
 
+  
   loginForm=this.formBuilder.group({
     email:['email@mail.com', [Validators.required, Validators.email] ],
     password:['', Validators.required]
@@ -38,8 +39,16 @@ export class LoginComponent implements OnInit{
 
   login(){
     if(this.loginForm.valid){
-      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next:(userData) => {
+
+
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+  
+      if (email !== null && email !==undefined && password !==null && password !== undefined ) {
+
+
+      this.loginService.login(email, password).subscribe({      
+         next:(userData) => {
           console.log(userData);
         },
         error: (errorData) => {
@@ -61,4 +70,5 @@ export class LoginComponent implements OnInit{
     }
   }
 
+  }
 }
