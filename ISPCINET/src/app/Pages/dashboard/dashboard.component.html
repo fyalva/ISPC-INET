@@ -27,23 +27,17 @@
 
   <div class="container mt-5" *ngIf="showSchools" style="color: white;">
     
-    <table *ngIf="schools.length > 0; else noSchools" class="table table-striped" style="background-color: transparent;">
-      <thead>
-        <tr>
-          <th>Nombre de la Escuela</th>
-          <th>Dirección</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let school of schools">
-          <td>{{ school.nombre }}</td>
-          <td>{{ school.adress }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
+    <div *ngIf="schools.length > 0; else noSchools">
+      <ul style="list-style-type: none;">
+        <li *ngFor="let school of schools">
+          <h2>{{ school.nombre }}</h2>
+          <p>{{ school.adress }}</p>
+          <hr>
+        </li>
+      </ul>
+    </div>
+    
     <ng-template #noSchools>
       <p>No se encontraron escuelas.</p>
     </ng-template>
-  </div>
   
