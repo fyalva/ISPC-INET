@@ -1,13 +1,11 @@
 export interface User {
     id: number;
+    first_name?: string;
+    last_name?: string,
     email?: string;
-    firstname?: string;
-    lastname?: string,
     password?: string,
-
 }
 
-/* esto devuelve un USER recordar: cambiar cuando salgamos de 
-la api de prueba */
+
 
 

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -17,22 +16,22 @@ export class RegistroComponent implements OnInit {
   form: FormGroup;
   usuario: Usuario = new Usuario();
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, 
-    private usuarioService: UsuarioService, private router: Router) { 
+  constructor(private authService: AuthService, private formBuilder: FormBuilder,
+    private usuarioService: UsuarioService, private router: Router) {
 
-      this.form = this.formBuilder.group(
-        {
-            firstname: ['', [Validators.required]],
-            lastaname: ['', [Validators.required]],
-            username: ['', [Validators.required]],
-            email: ['', [Validators.required]],
-            password: ['', [Validators.required]]
-        }
-      )
+    this.form = this.formBuilder.group(
+      {
+        first_name: ['', [Validators.required]],
+        last_name: ['', [Validators.required]],
+        username: ['', [Validators.required]],
+        email: ['', [Validators.required]],
+        password: ['', [Validators.required]]
+      }
+    )
   }
 
   ngOnInit(): void {
-      
+
   }
 
   onEnviar(event: Event, usuario: Usuario): void {
@@ -61,12 +60,12 @@ export class RegistroComponent implements OnInit {
     return this.form.get("email");
   }
 
-  get firstname() {
-    return this.form.get("firstname");
+  get first_name() {
+    return this.form.get("first_name");
   }
 
-  get lastname() {
-    return this.form.get("lastname");
+  get last_name() {
+    return this.form.get("last_name");
   }
 
   get username() {
@@ -75,21 +74,21 @@ export class RegistroComponent implements OnInit {
 
   get emailValid() {
     return this.email?.touched && !this.email?.valid;
-  } 
+  }
 
-  get firstnameValid() {
-    return this.firstname?.touched && !this.firstname?.valid;
-  } 
+  get first_nameValid() {
+    return this.first_name?.touched && !this.first_name?.valid;
+  }
 
-  get lastnameValid() {
-    return this.lastname?.touched && !this.lastname?.valid;
-  } 
+  get last_nameValid() {
+    return this.last_name?.touched && !this.last_name?.valid;
+  }
 
   get passwordValid() {
     return this.password?.touched && !this.password?.valid;
-  } 
+  }
 
   get usernameValid() {
     return this.username?.touched && !this.username?.valid;
-  } 
+  }
 }

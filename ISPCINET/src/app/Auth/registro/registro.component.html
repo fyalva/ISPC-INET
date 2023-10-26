@@ -10,21 +10,21 @@
             <form [formGroup]="form" class="form" (ngSubmit)="onEnviar($event, usuario)" >
               <div class="form-group">
                 <div class="m-3">
-                  <label for="firstname">Ingresá tu nombre</label>
-                  <input type="text" class="form-control" id="firstname" placeholder="Nombre"
-                  formControlName="firstname" [(ngModel)]="usuario.firstname" [class.border-danger]="firstnameValid">
-                  <div *ngIf="firstname?.errors && firstname?.touched">
-                    <p *ngIf="firstname?.hasError('required')" class="text-danger"> El nombre es requerido</p>
+                  <label for="first_name">Ingresá tu nombre</label>
+                  <input type="text" class="form-control" id="first_name" placeholder="Nombre"
+                  formControlName="first_name" [(ngModel)]="usuario.first_name" [class.border-danger]="first_nameValid">
+                  <div *ngIf="first_name?.errors && first_name?.touched">
+                    <p *ngIf="first_name?.hasError('required')" class="text-danger"> El nombre es requerido</p>
                   </div>
                 </div>
               </div>
 
               <div class="m-3">
-                <label for="lastname">Apellido</label>
-                <input type="text" class="form-control" id="lastname" placeholder="Apellido"
-                formControlName="lastname" [(ngModel)]="usuario.lastname" [class.border-danger]="lastnameValid">
-                <div *ngIf="lastname?.errors && lastname?.touched">
-                  <p *ngIf="lastname?.hasError('required')" class="text-danger"> El apellido es requerido</p>
+                <label for="last_name">Apellido</label>
+                <input type="text" class="form-control" id="last_name" placeholder="Apellido"
+                formControlName="last_name" [(ngModel)]="usuario.last_name" [class.border-danger]="last_nameValid">
+                <div *ngIf="last_name?.errors && last_name?.touched">
+                  <p *ngIf="last_name?.hasError('required')" class="text-danger"> El apellido es requerido</p>
                 </div>
               </div>
 
@@ -45,6 +45,7 @@
                   <p *ngIf="email?.hasError('required')" class="text-danger"> El mail es requerido</p>
                 </div>
               </div>
+              
 
               <div class="m-3">
                 <label for="password" class="form-label">Contraseña</label>

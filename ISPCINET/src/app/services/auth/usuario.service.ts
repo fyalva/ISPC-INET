@@ -5,10 +5,8 @@ import { Observable } from 'rxjs';
 
 export class Usuario 
 {
-  firstname:string="";
-  lastname:string="";
-  /*acá también cuando salgo de la api de prueba tengo que modificar
-  lastName era el correcto*/
+  first_name:string="";
+  last_name:string="";
   username:string="";
   email:string="";
   password:string="";
