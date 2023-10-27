@@ -1,6 +1,6 @@
-export interface Escuela {
+export interface Establecimiento {
   id: number;
-  name: string;
+  nombre: string;
   id_localidad: number;
   adress: string;
 

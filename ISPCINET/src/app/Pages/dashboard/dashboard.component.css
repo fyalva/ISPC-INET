@@ -1,0 +1,21 @@
+.nombre {
+    align-items: end;
+    text-align: end;
+    padding-right: 2em;
+}
+
+.auth {
+    align-items: end;
+    text-align: end;
+    padding-right: 2em;
+}
+
+.authno {
+    align-items: end;
+    text-align: end;
+    padding-right: 2em;
+}
+
+.btn {
+    align-items: baseline;
+}

@@ -1,9 +1,8 @@
-// C:\proyectos\ISPC_Pasantia\ISPC-INET\ISPCINET\src\app\app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderTopComponent } from './header/header-top/header-top.component';
@@ -11,9 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { LoginComponent } from './Auth/login/login.component';
-import { NavComponent } from './Nav/nav/nav.component';
-import { SchoolsModule } from '../app/schools/schools.module'; 
-import { CommonModule } from '@angular/common'; 
+import { NavComponent } from './Nav/nav/nav.component'; 
+import { from } from 'rxjs';
+import { CarouselComponent } from './carousel/carousel/carousel.component';
+import { RegistroComponent } from './Auth/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -23,16 +23,17 @@ import { CommonModule } from '@angular/common';
     DashboardComponent,
     LoginComponent,
     HeaderTopComponent,
-    NavComponent
+    NavComponent,
+    CarouselComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    CommonModule, 
-    SchoolsModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
