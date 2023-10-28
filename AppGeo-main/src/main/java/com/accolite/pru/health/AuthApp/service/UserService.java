@@ -110,28 +110,19 @@ public class UserService {
 	}
 
 	/**
-	 * Performs a quick check to see what roles the new user could be assigned to.
-	 *
-	 * @return list of roles for the new user
+	Asigna ROL al registrar.
 	 */
 	private Set<Role> getRolesForNewUser(Boolean isToBeMadeAdmin) {
-		/*Set<Role> newUserRoles = new HashSet<>(roleService.findAll());
-		if (!isToBeMadeAdmin) {
-			newUserRoles.removeIf(Role::isAdminRole);
-		}else {
-			newUserRoles.removeIf(Role::isUserRole);
-		}
-		logger.info("Setting user roles: " + newUserRoles);
-		return newUserRoles;*/
+
 		 Set<Role> newUserRoles = new HashSet<>();
 		    
 		    for (Role role : roleService.findAll()) {
 		        if (!isToBeMadeAdmin && !role.isAdminRole()) {
-		            newUserRoles.add(role);
+		            newUserRoles.add(role); // USER
 		        }
 		        
 		        if (isToBeMadeAdmin && !role.isUserRole()) {
-		            newUserRoles.add(role);
+		            newUserRoles.add(role); // ADMIN
 		        }
 		    }
 		    

@@ -1,0 +1,16 @@
+.contenedor {
+  align-items:flex-start
+}
+
+
+.btn {
+  margin-right: 2em;
+}
+
+.registro {
+  padding: 1em;
+  align-items: center;
+  align-content: center;
+}
+
+

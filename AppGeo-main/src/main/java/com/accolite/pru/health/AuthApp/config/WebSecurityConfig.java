@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		this.userDetailsService = userDetailsService;
 		this.jwtEntryPoint = jwtEntryPoint;
 	}
-
+	
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManager() throws Exception {

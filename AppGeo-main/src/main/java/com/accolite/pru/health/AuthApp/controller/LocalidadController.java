@@ -47,7 +47,7 @@ public class LocalidadController {
 
 	@PostMapping(value = "/add", consumes = "application/json")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<?> addEducation(@RequestBody Localidad localidad) {
+	public ResponseEntity<?> addLocalidad(@RequestBody Localidad localidad) {
 		
 		// Verificar si la localidad ya existe por nombre
 		Localidad existingLocalidad = localidadService.findByNombre(localidad.getNombre());
