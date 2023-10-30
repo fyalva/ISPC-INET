@@ -15,7 +15,7 @@ currentUser: Observable<Usuario>;
 //loggedIn: BehaviorSubject<boolean>;
 
 
-url='http://localhost:8080/api/user'
+  url='http://localhost:8080/api/auth/checkAuthentication'
   loggedIn: any;
 
   constructor(private http:HttpClient) { 

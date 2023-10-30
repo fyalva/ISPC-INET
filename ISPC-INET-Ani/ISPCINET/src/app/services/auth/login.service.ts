@@ -10,7 +10,7 @@ import { User } from './user';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id: 0, email:'', password:''});
+  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({email:'', password:''});
   /* Utilizar sesion storage para que el usuario no se tenga que loguear a cada rato */
 
   /*constructor(private http: HttpClient) { }*/
@@ -34,7 +34,7 @@ export class LoginService {
     }),
   };
 
-  login(email: string, password: string): Observable<any> {
+  /*login(email: string, password: string): Observable<any> {
     const body = {
       deviceInfo: {
         deviceId: '1',
@@ -45,7 +45,6 @@ export class LoginService {
       password: password,
     };
 
-  /*desde acá nos comunicamos a la Api reemplazando data por url*/
 
   return this.http.post(`${this.url}/login`, body, this.httpOp).pipe(map(info=>{
     sessionStorage
@@ -53,9 +52,37 @@ export class LoginService {
     //this.currentUserData.next(info);
     console.log("authentication service running..." + JSON.stringify(info));
     return info;
-  }));
-}
-
+  }));*/
+  login(email: string, password: string): Observable<User> {
+    const body = {
+      deviceInfo: {
+        deviceId: '1',
+        deviceType: 'DEVICE_TYPE_ANDROID',
+        notificationToken: 'Non',
+      },
+      email: email,
+      password: password,
+    };
+  
+    return this.http.post(`${this.url}/login`, body, this.httpOp).pipe(
+      map((response: any) => {
+        const userData: User = {
+          user_id: 1, // Establece un valor adecuado para el ID
+          email: '', // Establece el valor de email si está presente en la respuesta
+          password: '', // Establece el valor de password si está presente en la respuesta
+          // Otras propiedades según corresponda
+        };
+  
+        this.currentUserLoginOn.next(true);
+        this.currentUserData.next(userData);
+        sessionStorage.setItem('currentUser', JSON.stringify(userData));
+        console.log("authentication service running...", userData);
+        return userData;
+      })
+    );
+  }
+  
+  
   private handleError(error:HttpErrorResponse){
     if(error.status===0){
       console.error('Se ha producido un error', error.error);

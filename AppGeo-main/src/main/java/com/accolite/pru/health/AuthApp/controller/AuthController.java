@@ -41,6 +41,7 @@ import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -143,6 +144,23 @@ public class AuthController {
 			return ResponseEntity.ok(new ApiResponse(true, "Usuario creado correctamente! Revise su mail"));
 		}).orElseThrow(() -> new UserRegistrationException(registrationRequest.getEmail(), "Faltan datos"));
 	}
+	@GetMapping("/checkAuthentication")
+	@ApiOperation(value = "Checks if the user is authenticated")
+	public ResponseEntity checkAuthentication() {
+	    // Lógica para verificar si el usuario está autenticado.
+	    // Puedes utilizar la información del token JWT para hacer esta verificación.
+
+	    // Por ejemplo, puedes obtener el usuario actual de la solicitud:
+	    CustomUserDetails currentUser = authService.getCurrentUserDetails();
+
+	    if (currentUser != null) {
+	        // El usuario está autenticado.
+	        return ResponseEntity.ok(new ApiResponse(true, "User is authenticated"));
+	    } else {
+	        // El usuario no está autenticado.
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ApiResponse(false, "User is not authenticated"));
+	    }
+	}
 
 	/**
 	 * Receives the reset link request and publishes an event to send email id
@@ -229,6 +247,7 @@ public class AuthController {
 		}).orElseThrow(() -> new InvalidTokenRequestException("Email Verification Token", existingToken,
 				"No user associated with this request. Re-verification denied"));
 	}
+	
 
 	/**
 	 * Refresh the expired jwt token using a refresh token for the specific device

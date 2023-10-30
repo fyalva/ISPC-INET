@@ -25,7 +25,7 @@ export class Usuario
 
 export class UsuarioService {
 
- url="https://fakestoreapi.com/users";
+ url="http://localhost:4200/api/user";
 
  constructor(private http:HttpClient) { 
   console.log("servicio Usuarios funcionando");

@@ -25,6 +25,14 @@ public class RegistrationRequest {
 	@NullOrNotBlank(message = "Registration username can be null but not blank")
 	@ApiModelProperty(value = "A valid username", allowableValues = "NonEmpty String")
 	private String username;
+	
+	@NullOrNotBlank(message = "Registration username can be null but not blank")
+	@ApiModelProperty(value = "A valid firsname", allowableValues = "NonEmpty String")
+	private String first_name;
+	
+	@NullOrNotBlank(message = "Registration username can be null but not blank")
+	@ApiModelProperty(value = "A valid lastname", allowableValues = "NonEmpty String")
+	private String last_name;
 
 	@NullOrNotBlank(message = "Registration email can be null but not blank")
 	@ApiModelProperty(value = "A valid email", required = true, allowableValues = "NonEmpty String")
@@ -38,8 +46,10 @@ public class RegistrationRequest {
 	@ApiModelProperty(value = "Flag denoting whether the user is an admin or not", required = true, dataType = "boolean", allowableValues = "true, false")
 	private Boolean registerAsAdmin;
 
-	public RegistrationRequest(String username, String email, String password, Boolean registerAsAdmin) {
+	public RegistrationRequest(String username, String first_name, String last_name, String email, String password, Boolean registerAsAdmin) {
 		this.username = username;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.email = email;
 		this.password = password;
 		this.registerAsAdmin = registerAsAdmin;
@@ -74,6 +84,23 @@ public class RegistrationRequest {
 
 	public Boolean getRegisterAsAdmin() {
 		return registerAsAdmin;
+	}
+	
+	
+	public String getFirst_name() {
+		return first_name;
+	}
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public void setRegisterAsAdmin(Boolean registerAsAdmin) {
