@@ -44,7 +44,17 @@ currentUser: Observable<Usuario>;
 
 logout(): void {
     localStorage.removeItem('currentUser');
-    this.loggedIn.next(false);
+    this.currentUserSubject.next({
+      first_name: '',
+      last_name: '',
+      username: '',
+      email: '',
+      password: '',
+      id: 0,
+      token: ''
+      //el token solo si es necesario. Ver en usuarios.service.ts.
+    });
+    this.loggedIn.next(false); //esto marcaría como que ya no está auth. 
   }
 
 
